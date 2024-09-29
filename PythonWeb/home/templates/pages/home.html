@@ -1,0 +1,51 @@
+{% extends "pages/base.html" %}
+
+{% block title %}
+    Home
+{% endblock  %}
+
+{% block content %}
+    {% load static %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="home-layout">
+            <div id="tb" class="home-header">
+                <div id="tb" class="left-tb-menu">  
+                </div>
+                
+                <div id="tb" class="right-tb-menu">
+                    
+                {% if user.username %}
+                    <input type="submit" class="logout-btn cc-button-component" value="Log Out" name="logout">
+                {% else %}
+                    <a href="{% url 'login' %}" class="login-btn cc-button-component">Log In</a>
+                    <a href="{% url 'register' %}" class="signup-btn cc-button-component">Sign Up</a>
+                {% endif %}
+                </div>
+            </div>
+            
+            
+            <div class="index-component">
+                <div class="index-block">
+                    <div class="index-broad">
+                        <img src="{% static "images/standardboard1.png" %}" class="index-broad-img"/>
+                    </div>
+            
+                    <div class="index-intro">
+                        <div class="intro-button-wrap">
+                            <button type="submit" class="intro-play-onl-button cc-button-component">Play Online</button>
+                            <button type="submit" class="intro-play-com-button cc-button-component">Play Computer</button>
+                                
+                        </div>
+                    </div>
+                        
+                    
+                </div>
+                
+            </div>
+        </div>
+    
+    </form>
+
+{% endblock  %}
+
